@@ -24,6 +24,9 @@
             font-size: 55px;
             color: #2e5cb8;
         }
+        a:hover {
+            text-decoration: none;
+        }
     </style>
   </head>
   <body>
@@ -79,7 +82,7 @@ $forwarded_ip = forwarded_ip();
 
                     <h1>What Is My IP?</h1>
                     <p>The request came from:</p><br>
-                    <p><strong><?php echo $remote_ip; ?></strong></p>
+                    <a href="browser_mirror.php" data-toggle="tooltip" data-placement="auto" title="More info?"><p><strong><?php echo $remote_ip; ?></strong></p></a>
                     (<?php echo gethostbyaddr($remote_ip); ?>)<br><br><br>
 
                     <?php if ($forwarded_ip != "" && $forwarded_ip != $remote_ip) { ?>
@@ -94,5 +97,12 @@ $forwarded_ip = forwarded_ip();
 
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
   </body>
 </html>
